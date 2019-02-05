@@ -1,0 +1,30 @@
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+.banner-content{
+	top: 30%;
+	left: 50%;
+	transform:translateX(-50%);
+}
+.bg-dark-transparent {
+    background-color: #343a40d4!important;
+}
+a{
+	transition: .5s;
+
+}
+a:hover{
+	text-decoration: none;
+}
+h3>a:hover{
+	text-decoration: none;
+	border:1px solid grey;
+	border-top: none;
+	border-bottom: none;
+	padding: 0px 10px;
+
+}
