@@ -58,6 +58,25 @@ if(isset($_GET['resend'])){
 
 }
 
+
+//otp submisssion 
+if(isset($_POST['student_login'])){
+
+  $email=$_POST['email'];
+   $password=$_POST['password'];
+ 
+
+  $sql="SELECT * from register where password='$password' and email='$email' and is_nominee=''";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_num_rows($result);
+
+  if($count > 0){
+    header('location:voting.php');
+  } else{
+    header('location:Students/student_login.php?error=failed');
+  }
+}
+
 ?>
 
 <?php include_once('common/footer.php'); ?>

@@ -99,7 +99,7 @@
 
 
   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4 shadow-sm" name="submit_student_register">Submit</button>
-    <a href="student_registeration.php" class="text-center d-block mt-3 text-capitalize "><span class="text-dark">Back 2</span> Login</a>
+    <a href="student_login.php" class="text-center d-block mt-3 text-capitalize "><span class="text-dark">Back 2</span> Login</a>
 
 </form>
 </div>

@@ -31,4 +31,10 @@ function check_user_exists($conn,$email){
   $count=mysqli_num_rows($result);  
   return $count;
 }
+function get_nominees($conn,$post){ 
+  $sql="SELECT * from register where  post='$post'";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_fetch_assoc($result);  
+  return $count;
+}
 ?>
