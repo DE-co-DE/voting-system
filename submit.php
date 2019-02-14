@@ -1,6 +1,5 @@
 <?php 
 session_start();
-include_once('common/header.php');
 include_once('common/functions.php');
 include_once('database/connection.php');
 
@@ -69,15 +68,43 @@ if(isset($_POST['student_login'])){
   $sql="SELECT * from register where password='$password' and email='$email' and is_nominee=''";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);
-
+  $row=mysqli_fetch_array($result);
+  $_SESSION['user_id']=$row['email'];
   if($count > 0){
-    header('location:voting.php');
+    header('location:Students/student_dashboard.php');
   } else{
     header('location:Students/student_login.php?error=failed');
+  }
+}
+//register nominee
+
+if(isset($_POST['submit_nominee_register'])){
+  $f_name=$_POST['f_name'];
+  $l_name=$_POST['l_name'];
+  $department=$_POST['department'];
+  $year=$_POST['year'];
+  $post=$_POST['post'];
+  $email=$_POST['email'];
+  $mobile_no=$_POST['number'];
+
+  
+//   $check=check_user_exists($conn,$email);
+//   if($check > 0){
+//         header('location:Students/student_registration.php?error_exists=exist');
+// exit(0);
+//   }
+  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`is_nominee`='nominee' `status`='pending' Where `email`='$email'";
+  $result=mysqli_query($conn,$sql);
+  if($result){
+        header('location:Students/nominees_registration.php?success='.$post);
+
+  } else{
+    $error=mysqli_error($conn);
+        header('location:Students/nominees_registration.php?error='.$error);
+
   }
 }
 
 ?>
 
-<?php include_once('common/footer.php'); ?>
 

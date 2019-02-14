@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2019 at 07:05 PM
+-- Generation Time: Feb 14, 2019 at 08:14 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -39,15 +39,16 @@ CREATE TABLE `register` (
   `otp` int(255) NOT NULL,
   `is_nominee` varchar(100) NOT NULL,
   `profile_pic` varchar(500) NOT NULL,
-  `post` varchar(255) NOT NULL
+  `post` varchar(255) NOT NULL,
+  `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register`
 --
 
-INSERT INTO `register` (`id`, `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`, `is_nominee`, `profile_pic`, `post`) VALUES
-(4, 'student', 'pradeep', 'yadav', 'deep7rd@gmail.com', '8452062425', '123', 'IT', '2015', 8116, '', '', 'chair_person');
+INSERT INTO `register` (`id`, `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`, `is_nominee`, `profile_pic`, `post`, `status`) VALUES
+(4, 'student', 'pradeep', 'yadav', 'deep7rd@gmail.com', '8452062425', '123', 'IT', '2015', 8116, 'nominee', '', 'TPO', 'pending');
 
 -- --------------------------------------------------------
 

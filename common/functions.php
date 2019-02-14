@@ -37,4 +37,16 @@ function get_nominees($conn,$post){
   $count=mysqli_fetch_assoc($result);  
   return $count;
 }
+function get_user_by_email($conn,$email){
+  $sql="SELECT * from register where  email='$email'";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_fetch_assoc($result);  
+  return $count;
+}
+function total_vote($conn,$email,$post){
+$sql="SELECT * from voting_details where  voted='$email' AND voted_post='$post'";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_num_rows($result);  
+  return $count;
+}
 ?>
