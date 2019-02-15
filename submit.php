@@ -76,6 +76,25 @@ if(isset($_POST['student_login'])){
     header('location:Students/student_login.php?error=failed');
   }
 }
+
+//------------admin login------------
+if(isset($_POST['admin_login'])){
+
+  $email=$_POST['email'];
+   $password=$_POST['password'];
+ 
+
+  $sql="SELECT * from admin where password='$password' and email='$email'";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_num_rows($result);
+  $row=mysqli_fetch_array($result);
+  $_SESSION['user_id']=$row['email'];
+  if($count > 0){
+    header('location:Admin/dashboard.php');
+  } else{
+    header('location:Admin/login.php?error=failed');
+  }
+}
 //register nominee
 
 if(isset($_POST['submit_nominee_register'])){

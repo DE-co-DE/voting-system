@@ -35,12 +35,14 @@ function get_nominees($conn,$post){
   $sql="SELECT * from register where  post='$post'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_fetch_assoc($result);  
+   //print_r($count);
   return $count;
 }
 function get_user_by_email($conn,$email){
   $sql="SELECT * from register where  email='$email'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_fetch_assoc($result);  
+
   return $count;
 }
 function total_vote($conn,$email,$post){
