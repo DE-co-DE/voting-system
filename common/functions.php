@@ -1,4 +1,5 @@
 <?php 
+$count_a=array();
 function otp_form($email){
   return '<div class="container">
 <div class=" row position-relative mt-5">
@@ -34,8 +35,11 @@ function check_user_exists($conn,$email){
 function get_nominees($conn,$post){ 
   $sql="SELECT * from register where  post='$post'";
   $result=mysqli_query($conn,$sql);
-  $count=mysqli_fetch_assoc($result);  
-   //print_r($count);
+while($row=mysqli_fetch_array($result))
+     {
+        $count[] = $row;
+    
+    }   //print_r($count);
   return $count;
 }
 function get_user_by_email($conn,$email){
@@ -47,6 +51,31 @@ function get_user_by_email($conn,$email){
 }
 function total_vote($conn,$email,$post){
 $sql="SELECT * from voting_details where  voted='$email' AND voted_post='$post'";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_num_rows($result);  
+  return $count;
+}
+function get_voting_details($conn){
+$sql="SELECT * from start_vote";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_fetch_assoc($result);  
+  return $count;
+}
+function get_all_nominees($conn){
+  $sql="SELECT * from register where  is_nominee!=''";
+  $result=mysqli_query($conn,$sql);
+  while($row=mysqli_fetch_array($result))
+     {
+        $count[] = $row;
+    
+    }
+      // print_r($count);
+
+    return $count;
+}
+
+function check_table($conn,$table){
+$sql="SELECT * from $table";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);  
   return $count;

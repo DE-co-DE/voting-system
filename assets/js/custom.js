@@ -11,3 +11,4 @@ $('.dropdown').hover(function() {
 }, function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).hide(500);
 });
+$('.alert').fadeOut(2000);

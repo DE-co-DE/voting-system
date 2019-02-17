@@ -40,7 +40,7 @@ include_once('common/functions.php');
 
     <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="">
       <div class="card-block">
-       <?php $chair_person[]= get_nominees($conn,'chair person');
+       <?php $chair_person= get_nominees($conn,'chair person');
       // print_r($nominee);
        if(!empty($chair_person)){
        foreach($chair_person as $nam){
@@ -65,7 +65,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
       <div class="card-block">
-       <?php $president[]= get_nominees($conn,'president');
+       <?php $president= get_nominees($conn,'president');
        if(!empty($president)){
        foreach($president as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -88,7 +88,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
       <div class="card-block">
-       <?php $secretary[]= get_nominees($conn,'secretary');
+       <?php $secretary= get_nominees($conn,'secretary');
        if(!empty($secretary)){
        foreach($secretary as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -112,7 +112,7 @@ include_once('common/functions.php');
 
     <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="">
       <div class="card-block">
-       <?php $TPO[]= get_nominees($conn,'TPO');
+       <?php $TPO= get_nominees($conn,'TPO');
        if(!empty($TPO)){
        foreach($TPO as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -135,7 +135,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
       <div class="card-block">
-       <?php $cultural[]= get_nominees($conn,'cultural');
+       <?php $cultural= get_nominees($conn,'cultural');
        if(!empty($cultural)){
        foreach($cultural as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -158,7 +158,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
       <div class="card-block">
-       <?php $treasurer[]= get_nominees($conn,'treasurer');
+       <?php $treasurer= get_nominees($conn,'treasurer');
        if(!empty($treasurer)){
        foreach($treasurer as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -181,7 +181,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
       <div class="card-block">
-       <?php $publicity_head[]= get_nominees($conn,'publicity head');
+       <?php $publicity_head= get_nominees($conn,'publicity head');
        if(!empty($publicity_head)){
        foreach($publicity_head as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
@@ -204,7 +204,7 @@ include_once('common/functions.php');
     </div>
     <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
       <div class="card-block">
-       <?php $sports[]= get_nominees($conn,'sports');
+       <?php $sports= get_nominees($conn,'sports');
        if(!empty($sports)){
        foreach($sports as $nam){
         echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';

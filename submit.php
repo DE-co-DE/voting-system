@@ -77,6 +77,28 @@ if(isset($_POST['student_login'])){
   }
 }
 
+
+//admin voting date submission 
+if(isset($_POST['voting_date_submit'])){
+
+  $voting_start=$_POST['voting_start'];
+  $voting_end=$_POST['voting_end'];
+  $voting_result=$_POST['voting_result'];
+ 
+ $sql_check=check_table($conn,'start_vote');
+if($sql_check>0){
+$sql="UPDATE start_vote set start_date='$voting_start' ,end_date='$voting_end',result_date='$voting_result' ";
+} else{
+  $sql = "INSERT INTO `start_vote` (`start_date`, `end_date`,`result_date`) VALUES('$voting_start','$voting_end','$voting_result')";
+}
+  $result=mysqli_query($conn,$sql);
+  if($result){
+    header('location:Admin/dashboard.php?page=home&status=success');
+  } else{
+    header('location:Admin/dashboard.php?page=home&status=failed');
+  }
+}
+
 //------------admin login------------
 if(isset($_POST['admin_login'])){
 
