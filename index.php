@@ -1,4 +1,6 @@
-<?php include_once('common/header.php'); ?>
+<?php include_once('common/header.php'); 
+ include_once('database/connection.php'); 
+include_once('common/functions.php');?>
 <div class="row col-md-12 position-relative">
 	<img src="assets/images/voting-09.jpg" class="img-fluid w-100" style="height: 400px">
 <div class="position-absolute banner-content bg-dark-transparent shadow ">
@@ -60,10 +62,16 @@
 	<h3 class="bg-info p-3 text-white">Notice Board</h3>
 	<hr>
 	<marquee direction="up">
-<img src="assets/images/voting2.jpg" class="img-fluid">
-<img src="assets/images/voting2.jpg" class="img-fluid">
-<img src="assets/images/voting2.jpg" class="img-fluid">
-<img src="assets/images/voting2.jpg" class="img-fluid">
+    <?php $get_details=get_voting_details($conn); ?>
+                            
+                            <h4 class="alert alert-secondary">START DATE</h4>
+                            <p class="text-secondary"><?php echo $get_details['start_date']?$get_details['start_date']:'Not updated yet'?></p>
+
+                            <h4 class="alert alert-danger mt-3">END DATE</h4>
+                            <p class="text-danger"><?php echo $get_details['end_date']?$get_details['end_date']:'Not updated yet'?></p>
+                            <h4 class="alert alert-info mt-3">RESULT DATE</h4>
+                            <p class="text-info"><?php echo $get_details['result_date']?$get_details['result_date']:'Not updated yet'?></p>
+                            
 	</marquee>
 </div>
 <?php include_once('common/footer.php'); ?>
