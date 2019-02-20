@@ -1,4 +1,5 @@
 <?php 
+session_start();
 define("app_path","http://localhost/voting system/" ,true); ?>
 
 <!DOCTYPE html>
@@ -35,9 +36,11 @@ define("app_path","http://localhost/voting system/" ,true); ?>
       <li class="nav-item">
         <a class="nav-link" href="#">Help</a>
       </li>
+      <?php if(isset($_SESSION['user_id'])){?>
   <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="<?php echo app_path; ?>logout.php">Logout</a>
       </li>
+    <?php }?>
     </ul>
   </div>
 </nav>

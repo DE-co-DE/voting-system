@@ -13,7 +13,7 @@
   </button>
 </div>';
     }?>
-     <?php if(@$_GET['registered']){
+     <?php if(@$_GET['msg']=='registered'){
       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong> Registration successfull. Login to continue..
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">

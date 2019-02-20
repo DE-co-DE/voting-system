@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include_once('common/header.php');
 include_once('common/functions.php');
 include_once('database/connection.php');
@@ -71,6 +70,7 @@ if(isset($_POST['student_login'])){
   $count=mysqli_num_rows($result);
   $row=mysqli_fetch_array($result);
   $_SESSION['user_id']=$row['email'];
+  $_SESSION['user_type']=$row['user_type'];
   if($count > 0){
     header('location:Students/student_dashboard.php');
   } else{
@@ -112,6 +112,7 @@ if(isset($_POST['admin_login'])){
   $count=mysqli_num_rows($result);
   $row=mysqli_fetch_array($result);
   $_SESSION['user_id']=$row['email'];
+    $_SESSION['user_type']=$row['user_type'];
   if($count > 0){
     header('location:Admin/dashboard.php');
   } else{

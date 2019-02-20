@@ -17,9 +17,10 @@ include_once('common/functions.php');
                         <p class="card-text">Post - Chair person</p>
                         <p class="card-text">Academic Year - 3rd year</p>
                         <p class="card-text">Department - IT</p>
-                        <div class="icon-block">
-                        	<button class="btn btn-block btn-outline-info">VOTE <span class="fa fa-thumbs-o-up"></button>
-                        </div>
+                    <?php if($_GET['post']=='request') {?>  
+                        <a class="btn  btn-outline-success " >ACCEPT <span class="fa fa-thumbs-o-up"></span></a>
+                        <a class="btn  btn-outline-danger " >DECLINE <span class="fa fa-thumbs-o-down"></span></a>
+                    <?php }  ?>                      
                     </div>
                 </div>
     		</div>
