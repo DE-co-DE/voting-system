@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include_once('common/header.php');
 include_once('common/functions.php');
 include_once('database/connection.php');
 
@@ -134,7 +135,7 @@ if(isset($_POST['submit_nominee_register'])){
 //         header('location:Students/student_registration.php?error_exists=exist');
 // exit(0);
 //   }
-  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`is_nominee`='nominee' `status`='pending' Where `email`='$email'";
+  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`status`='pending' Where `email`='$email'";
   $result=mysqli_query($conn,$sql);
   if($result){
         header('location:Students/nominees_registration.php?success='.$post);

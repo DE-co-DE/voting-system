@@ -1,5 +1,5 @@
 <?php 
-define("app_path","http://localhost/voting-system/" ,true); ?>
+define("app_path","http://localhost/voting system/" ,true); ?>
 
 <!DOCTYPE html>
 <html>

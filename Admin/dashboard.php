@@ -79,7 +79,7 @@ include_once('../common/functions.php');
 	  			<div class=" col-sm-4 col-12  ">          	
 	            <div class="card shadow-sm">
 	  			<div class="card p-2 text-info"><?php
-	  			echo '<a href="../nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="text-primary">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+	  			echo '<a href="../nominee_profile.php?nominee='.$nam["email"].'&post=nominee" class="text-primary">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
 	  			echo '<span>'.$nam["post"].'</span>';
 	  			?>
 	  			</div>
@@ -91,7 +91,24 @@ include_once('../common/functions.php');
 		          </div>
 
           <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+          <div class="container-fluid mt-5 w-100">
+          		<div class="row">
+          	   <?php $nominees_request= get_all_nominee_request($conn);
+
+	       if(!empty($nominees_request)){
+	       foreach($nominees_request as $nam){ ?>
+	  			<div class=" col-sm-4 col-12  ">          	
+	            <div class="card shadow-sm">
+	  			<div class="card p-2 text-info"><?php
+	  			echo '<a href="../nominee_profile.php?nominee='.$nam["email"].'&post=request" class="text-primary">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+	  			echo '<span>'.$nam["post"].'</span>';
+	  			?>
+	  			</div>
+		          </div>
+		          </div>
+		      <?php }} ?>
+		          </div>
+		          </div>
           </div>
           <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
            <div class="d-block mt-5">

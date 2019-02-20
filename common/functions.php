@@ -74,6 +74,19 @@ function get_all_nominees($conn){
     return $count;
 }
 
+function get_all_nominee_request($conn){
+  $sql="SELECT * from register where  is_nominee='' AND status='pending'";
+  $result=mysqli_query($conn,$sql);
+  while($row=mysqli_fetch_array($result))
+     {
+        $count[] = $row;
+    
+    }
+      // print_r($count);
+
+    return $count;
+}
+
 function check_table($conn,$table){
 $sql="SELECT * from $table";
   $result=mysqli_query($conn,$sql);
