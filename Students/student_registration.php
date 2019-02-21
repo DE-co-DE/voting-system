@@ -55,11 +55,11 @@
   <div class="form-group">
     <label for="year">Select Academic Year</label>
 <select class="form-control" name="year" >
-	<option>2015</option>
-	<option>2016</option>
-	<option>2017</option>
-	<option>2018</option>
-	<option>2019</option>
+	<option value="1st year">1st year</option>
+  <option value="2nd year">2nd year</option>
+  <option value="3rd yaer">3rd yaer</option>
+  <option value="4th year">4th year</option>
+  <option value="5th year">5th year</option>
 </select>
   </div>
   </div>

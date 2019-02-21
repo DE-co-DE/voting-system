@@ -49,12 +49,13 @@ function get_user_by_email($conn,$email){
 
   return $count;
 }
-function total_vote($conn,$email,$post){
-$sql="SELECT * from voting_details where  voted='$email' AND voted_post='$post'";
+function total_vote($conn,$email){
+$sql="SELECT DISTINCT(voter) from voting_details where  voted='$email'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);  
   return $count;
 }
+
 function get_voting_details($conn){
 $sql="SELECT * from start_vote";
   $result=mysqli_query($conn,$sql);

@@ -44,7 +44,7 @@ include_once('common/functions.php');
       // print_r($nominee);
        if(!empty($chair_person)){
        foreach($chair_person as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
 
 }
        }
@@ -68,7 +68,7 @@ include_once('common/functions.php');
        <?php $president= get_nominees($conn,'president');
        if(!empty($president)){
        foreach($president as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -91,7 +91,7 @@ include_once('common/functions.php');
        <?php $secretary= get_nominees($conn,'secretary');
        if(!empty($secretary)){
        foreach($secretary as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -115,7 +115,7 @@ include_once('common/functions.php');
        <?php $TPO= get_nominees($conn,'TPO');
        if(!empty($TPO)){
        foreach($TPO as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -138,7 +138,7 @@ include_once('common/functions.php');
        <?php $cultural= get_nominees($conn,'cultural');
        if(!empty($cultural)){
        foreach($cultural as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -161,7 +161,7 @@ include_once('common/functions.php');
        <?php $treasurer= get_nominees($conn,'treasurer');
        if(!empty($treasurer)){
        foreach($treasurer as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -184,7 +184,7 @@ include_once('common/functions.php');
        <?php $publicity_head= get_nominees($conn,'publicity head');
        if(!empty($publicity_head)){
        foreach($publicity_head as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>
@@ -207,7 +207,7 @@ include_once('common/functions.php');
        <?php $sports= get_nominees($conn,'sports');
        if(!empty($sports)){
        foreach($sports as $nam){
-        echo '<a href="nominee_profile.php?nominee='.$nam["first_name"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
+        echo '<a href="nominee_profile.php?nominee='.$nam["email"].'&post='.$nam["post"].'" class="list-group-item">'.$nam["first_name"].' ' .$nam["last_name"].'</a>';
        }
      }
         ?>

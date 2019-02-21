@@ -147,6 +147,19 @@ if(isset($_POST['submit_nominee_register'])){
 
   }
 }
+if(isset($_GET['by'])){ // vote
+  $by=$_GET['by'];
+  $to=$_GET['to'];
+
+ $sql = "INSERT INTO `voting_details` (`voter`, `voted`) VALUES('$by','$to')";
+
+  $result=mysqli_query($conn,$sql);
+  if($result){
+    header('location:nominee_profile.php?vote_status=success');
+  } else{
+    header('location:nominee_profile.php?vote_status=failed');
+  }
+}
 
 ?>
 

@@ -77,11 +77,11 @@ include_once('../common/functions.php');
     <label for="year">Select Academic Year</label>
 <select class="form-control" name="year" >
 		<option value="<?php echo $nominee['year'] ?>"><?php echo $nominee['year'] ?></option>
-	<option value="2015">2015</option>
-	<option value="2016">2016</option>
-	<option value="2017">2017</option>
-	<option value="2018">2018</option>
-	<option value="2019">2019</option>
+	<option value="1st year">1st year</option>
+	<option value="2nd year">2nd year</option>
+	<option value="3rd yaer">3rd yaer</option>
+	<option value="4th year">4th year</option>
+	<option value="5th year">5th year</option>
 </select>
   </div>
   </div>
