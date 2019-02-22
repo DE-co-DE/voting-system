@@ -4,7 +4,7 @@
 	<div class=" col-md-6 offset-3 ">
 
 	<div class="card shadow">
-  <div class="card-header display-4 text-info text-center">Student Login</div>
+  <div class="card-header display-4 text-info text-center"><?php echo @$_GET['nominee']?'Nominees':'Student';?> Login</div>
   <?php if(@$_GET['error']){
       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>ERROR!</strong> Incorrect username or password!
@@ -40,7 +40,7 @@
 </label>
   </div>
   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4" name="student_login">Submit</button>
-    <a href="student_registration.php" class="text-center d-block mt-3 text-capitalize "><span class="text-dark">To Register</span> click here</a>
+   <?php echo @$_GET['nominee']?'':'  <a href="student_registration.php" class="text-center d-block mt-3 text-capitalize "><span class="text-dark">To Register</span> click here</a>';?>
 
 </form>
 </div>

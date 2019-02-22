@@ -13,6 +13,22 @@ include_once('common/functions.php');
 </div>';
     }
      if(@$_GET['vote_status']=='error'){
+      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> Failed due to some error please try again!.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }
+    if(@$_GET['n_status']=='success'){
+      echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Info!</strong> '.@$_GET['tab'].' Done.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }
+    if(@$_GET['n_status']=='error'){
       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Error!</strong> Failed due to some error please try again!.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,8 +56,8 @@ include_once('common/functions.php');
                     <?php 
                     if(@!$_GET['vote_status']){
                         if(@$_GET['post']=='request') {?>  
-                        <a class="btn  btn-outline-success " href="submit.php?nominee_request=declined">ACCEPT<span class="fa fa-thumbs-o-up"></span></a>
-                        <a class="btn  btn-outline-danger " href="submit.php?nominee_request=accepted" >DECLINE <span class="fa fa-thumbs-o-down"></span></a>
+                        <a class="btn  btn-outline-success " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=declined">ACCEPT<span class="fa fa-thumbs-o-up"></span></a>
+                        <a class="btn  btn-outline-danger " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=accepted" >DECLINE <span class="fa fa-thumbs-o-down"></span></a>
                     <?php } else{ ?>   
                     <a class="btn  btn-outline-info w-100" href="submit.php?by=<?php echo $_SESSION['user_id'] ?>&to=<?php echo $_GET['nominee'] ?> " >VOTE <span class="fa fa-thumbs-o-up"></span></a>  
                     <?php }

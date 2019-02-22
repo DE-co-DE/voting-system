@@ -35,7 +35,7 @@ include_once('common/functions.php');?>
             <div class="card border-danger mx-sm-1 p-3">
                 <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-users" aria-hidden="true"></span></div>
                 <div class="text-danger text-center mt-3"><h4>Nominees</h4></div>
-                <div class="text-danger text-center mt-2"><h3><a href="" class="text-danger ">Section</a></h3></div>
+                <div class="text-danger text-center mt-2"><h3><a href="Students/student_login.php?nominee=login" class="text-danger ">Section</a></h3></div>
             </div>
         </div>
         

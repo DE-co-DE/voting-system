@@ -161,6 +161,30 @@ if(isset($_GET['by'])){ // vote
   }
 }
 
+//accept or reject nominee
+
+if(isset($_GET['nominee_request'])){
+  echo $nominee_request=$_GET['nominee_request'];
+  echo $email=$_GET['nominee'];
+  //exit();
+  if($nominee_request=='declined'){
+
+  $sql="UPDATE  register SET  `status`='declined' Where `email`='$email'";
+  } else{
+
+  $sql="UPDATE  register SET    `is_nominee`='nominee',`user_type`='nominee',`status`='accepted' Where `email`='$email'"; 
+  }
+  $result=mysqli_query($conn,$sql);
+  if($result){
+        header('location:nominee_profile.php?nominee='.$email.'&tab='.$nominee_request.' & n_status=success&post=request');
+
+  } else{
+    $error=mysqli_error($conn);
+        header('location:nominee_profile.php?n_status=error');
+
+  }
+}
+
 ?>
 
 
