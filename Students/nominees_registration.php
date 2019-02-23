@@ -44,16 +44,23 @@ include_once('../common/functions.php');
     }
     ?>
   <div class="card-body">
-<form action="<?php echo app_path; ?>submit.php" method="post">
+<form action="<?php echo app_path; ?>submit.php" method="post" enctype="multipart/form-data">
 
 	<div class="row">
-	<div class="col-sm-6 col-12">
+      <div class="col-sm-4 col-12">
+  <div class="form-group">
+    <label >Profile Picture </label>
+    <img  src="<?php echo $nominee['profile_pic']?app_path.$nominee['profile_pic']:app_path.'uploaded/user.jpg' ?>" class="img-fluid w-100">
+    <input type="hidden" name="img" value="<?php echo $nominee['profile_pic']; ?>">
+  </div>
+  </div>
+	<div class="col-sm-4 col-12">
   <div class="form-group">
     <label for="f_name">First Name</label>
     <input type="text" class="form-control" id="f_name" name="f_name"  value="<?php echo $nominee['first_name'] ?>">
   </div>
   </div>
-  	<div class="col-sm-6 col-12">
+  	<div class="col-sm-4 col-12">
   <div class="form-group">
     <label for="l_name">Last Name</label>
     <input type="text" class="form-control" id="l_name" name="l_name" value="<?php echo $nominee['last_name'] ?>">
@@ -99,6 +106,17 @@ include_once('../common/functions.php');
   <div class="form-group">
     <label for="number">Mobile</label>
     <input type="number" class="form-control" id="number" name="number" value="<?php echo $nominee['mobile_no'] ?>">
+  </div>
+  </div>
+  </div>
+      <div class="row">
+  <div class="col-12">
+  <div class="form-group">
+  <div class="custom-file">
+  <input type="file" class="custom-file-input" id="profile_pic" name="profile_pic">
+  <label class="custom-file-label" for="profile_pic">Choose Profile Picture</label>
+</div>
+  
   </div>
   </div>
   </div>

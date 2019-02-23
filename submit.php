@@ -129,14 +129,21 @@ if(isset($_POST['submit_nominee_register'])){
   $post=$_POST['post'];
   $email=$_POST['email'];
   $mobile_no=$_POST['number'];
-
+  $img=$_POST['img'];
+  $folder="uploaded/";
+  $filename=$_FILES['profile_pic']['name'];
+  $temp=$_FILES['profile_pic']['tmp_name'];
+  if($filename==''){
+    $filename=$img;
+  } else{
+  if(move_uploaded_file($temp, $folder.$filename)){
+    $filename=$folder.$filename;
+  } else{
+    $filename='';
+  }
+}
   
-//   $check=check_user_exists($conn,$email);
-//   if($check > 0){
-//         header('location:Students/student_registration.php?error_exists=exist');
-// exit(0);
-//   }
-  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`status`='pending' Where `email`='$email'";
+  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`profile_pic`='$filename',`status`='pending' Where `email`='$email'";
   $result=mysqli_query($conn,$sql);
   if($result){
         header('location:Students/nominees_registration.php?success='.$post);
@@ -169,7 +176,7 @@ if(isset($_GET['nominee_request'])){
   //exit();
   if($nominee_request=='declined'){
 
-  $sql="UPDATE  register SET  `status`='declined' Where `email`='$email'";
+  $sql="UPDATE  register SET `is_nominee`='',`user_type`='student', `status`='declined' Where `email`='$email'";
   } else{
 
   $sql="UPDATE  register SET    `is_nominee`='nominee',`user_type`='nominee',`status`='accepted' Where `email`='$email'"; 

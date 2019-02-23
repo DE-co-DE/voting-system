@@ -33,14 +33,19 @@ function check_user_exists($conn,$email){
   return $count;
 }
 function get_nominees($conn,$post){ 
-  $sql="SELECT * from register where  post='$post'";
+  $sql="SELECT * from register where  post='$post' and user_type='nominee'";
   $result=mysqli_query($conn,$sql);
-while($row=mysqli_fetch_array($result))
+   $count_r=mysqli_num_rows($result); 
+    if($count_r > 0){ 
+  while($row=mysqli_fetch_array($result))
      {
         $count[] = $row;
     
-    }   //print_r($count);
-  return $count;
+    }
+      // print_r($count);
+
+    return $count;
+  }
 }
 function get_user_by_email($conn,$email){
   $sql="SELECT * from register where  email='$email'";

@@ -38,17 +38,35 @@ include_once('../common/functions.php');
 	</div>
 <?php } ?>
 	<div class="row ">
-		<div class="col-md-4 mx-auto">
+		<div class="col-md-4 ">
+
 	<?php if($nominee['post']){
+
   	$vote=total_vote($conn,$email,$nominee['post']);
 			?>
-
-			<h3 class="d-inline">Post : <?php echo $nominee['post'];?> </h3><span class="text-danger"><?php echo $nominee['status'];?></span>
-			<h5>Total Vote : <?php echo $vote;?> </h5>
-			<?php }?>
+ <img  src="<?php echo $nominee['profile_pic']?app_path.$nominee['profile_pic']:app_path.'uploaded/user.jpg' ?>" class="img-fluid w-100">
+</div>
+<div class="col-sm-8">
+			<h4 class="d-inline">Post : <?php echo $nominee['post'];?> </h4><span class="text-danger"><?php echo $nominee['status'];?></span>
+			<hr>
+			<h5>Total Vote : <?php echo $nominee['status']=='pending'?"<span class='text-danger'>".$nominee['status']."</span>":$vote;?> </h5>
+			
+			<hr>
+			 <h5 class="card-title pt-2">Full name : <?php echo $nominee['first_name'].' '.$nominee['last_name']; ?> </h5>
+                      
+                        <p class="card-text">Academic Year - <?php echo $nominee['year'] ?></p>
+                        <p class="card-text">Department - <?php echo $nominee['department'] ?></p>
 </div>
 </div>
 	</div>
+	<?php if($nominee['status']=='declined'){?>
+		<div class="alert alert-danger" role="alert">
+ <strong>Sorry !</strong> Your request for nominee has benn rejected.<br>
+ But you can still vote as student  <br>
+
+ To vote click on the Vote button <a href="<?php echo app_path.'voting.php'; ?>" class="btn btn-info btn-sm">Vote</a> 
+</div>
+<?php }  }?>
 	</div>
 	</div>
 	</div>

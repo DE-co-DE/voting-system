@@ -1,6 +1,19 @@
 <?php include_once('common/header.php'); 
  include_once('database/connection.php'); 
-include_once('common/functions.php');?>
+include_once('common/functions.php');
+if(!empty($_SESSION['user_type'])){
+ if($_SESSION['user_type']=='student'){
+ header('location:'.app_path.'Students/student_dashboard.php');
+ } elseif($_SESSION['user_type']=='nominee'){
+    header('location:'.app_path.'Students/student_dashboard.php');
+  exit();
+ }
+ elseif($_SESSION['user_type']=='admin'){
+    header('location:'.app_path.'Admin/dashboard.php');
+  exit();
+ }
+}
+?>
 <div class="row col-md-12 position-relative">
 	<img src="assets/images/voting-09.jpg" class="img-fluid w-100" style="height: 400px">
 <div class="position-absolute banner-content bg-dark-transparent shadow ">

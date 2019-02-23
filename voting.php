@@ -3,12 +3,13 @@ include_once('common/header.php');
 include_once('database/connection.php');
 include_once('common/functions.php');
  
+ if($_SESSION['user_type']=='student'){
+
+ } else{
+    header('location:'.app_path);
+  exit();
+ }
  ?>
-
-
-
-
-
 
     <div class="container-fluid">
 
