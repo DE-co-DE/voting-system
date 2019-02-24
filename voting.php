@@ -24,7 +24,7 @@ include_once('common/functions.php');
 
             </div>
             </div>
-            <div class="col-md-7 mt-5 pt-2">
+            <div class="col-md-7">
                 <div class="bd-example" data-example-id="">
 <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">

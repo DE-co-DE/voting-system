@@ -1,6 +1,6 @@
 <?php 
 session_start();
-define("app_path","http://localhost/voting-system/" ,true); ?>
+define("app_path","http://localhost/voting system/" ,true); ?>
 
 <!DOCTYPE html>
 <html>
@@ -44,3 +44,8 @@ define("app_path","http://localhost/voting-system/" ,true); ?>
     </ul>
   </div>
 </nav>
+      <?php if(isset($_SESSION['user_id'])){?>
+
+  <button onclick="window.history.back();" class="btn btn-sm btn-outline-info mt-1 ml-3 mb-1"><span class="fa fa-angle-double-left"> </span> Back</button>
+  <a href="index.php" class="btn btn-sm btn-outline-info mt-1 ml-3 mb-1"><span class="fa fa-home"> </span> Home</a>
+<?php } ?>

@@ -3,6 +3,7 @@ include_once('common/header.php');
 include_once('database/connection.php');
 include_once('common/functions.php');
 ?>
+
 	<div class="col-md-4 offset-md-4 mt-3 ">
             <?php if(@$_GET['vote_status']=='success'){
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,6 +11,11 @@ include_once('common/functions.php');
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
+  <br>
+  <br>
+    <a href="voting.php" class="btn btn-sm btn-outline-danger">Go to the vote page</a>
+  <a href="Students/student_dashboard.php" class="btn btn-sm btn-outline-danger">Home</a>
+
 </div>';
     }
      if(@$_GET['vote_status']=='error'){
@@ -18,6 +24,16 @@ include_once('common/functions.php');
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
+
+</div>';
+    }
+    if(@$_GET['vote_status']=='failed_exists'){
+      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> It Seems you have already voted him!.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <a href="voting.php">Go to the vote page</a>
 </div>';
     }
     if(@$_GET['n_status']=='success'){

@@ -12,7 +12,16 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
-    }?>
+    }
+    if(!empty($_SESSION['forget_pwd'])){
+       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Check your mail .<br>We have sent you an mail with your password.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+unset($_SESSION['forget_pwd']);
+  }?>
   <div class="card-body">
 <form action="../submit.php" method="post">
   <div class="form-group">
@@ -29,7 +38,7 @@
     </label>
   </div>
   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4" name="admin_login">Submit</button>
-  <a href="forgot_password.php" class="text-center d-block mt-3 ">Lost your password?</a>
+      <a href="../submit.php?forget_pwd=true" class="text-right  mt-3 ">Lost your password?</a>
 </form>
 </div>
 </div>

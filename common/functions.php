@@ -102,4 +102,43 @@ $sql="SELECT * from $table";
   $count=mysqli_num_rows($result);  
   return $count;
 }
+
+function sendmail($to,$message,$subject){
+
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <deepak19196@gmail.com>' . "\r\n";
+
+if(mail($to,$subject,$message,$headers)){
+return "send";
+} else{
+  return "error";
+}
+}
+
+function forget_pwd(){
+  return '<div class="container">
+<div class=" row position-relative mt-5">
+  <div class=" col-md-6 offset-3 ">
+  <div class="card shadow">
+  <div class="card-header display-4 text-info text-center">LOST PASSWORD!</div>
+  <div class="card-body">
+<form action="" method="post">
+  <div class="form-group">
+    <label for="otp">  Enter your registered email id</label>
+    <input type="email" class="form-control" id="otp" name="email" required>
+  </div>
+  <div class="form-group">
+  </div>
+   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4" name="forget_pwd_submit">Proceed</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>';
+}
 ?>
