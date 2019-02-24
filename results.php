@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-		<title>voting::Result</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php include_once('common/header.php'); 
+ include_once('database/connection.php'); 
+include_once('common/functions.php');
+ $announced=check_announced($conn);
+                    if($announced=='1'){
+header('location:index.php');  }   ?>
+<div class="container-fluid mt-5">
+<div class="row">
+	<?php $posts=get_posts($conn);
+	$i=0;
+	$count= count($posts);
+	foreach ($posts as $post) {
+		$i++;
+		?>
+ <div class="col-md-4">
+          <div class="card">
+  <div class="card-header text-uppercase"><?php echo $post['post'] ?></div>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<?php $nominees=get_nominees($conn,$post['post']);
+	$j=0;
+	foreach ($nominees as $nominee) { 
+		$j++;
+		?>
+		<div class="d-flex justify-content-between">
+  <div class="card-body"><?php echo $nominee['first_name'].' '.$nominee['last_name']; ?></div> 
+  <div class="card-body">Votes
+  	<?php  $votes=total_vote($conn,$nominee['email']);?>
+   <span class="badge badge-pill badge-secondary"><?php echo $votes==0?'0':$votes; ?></span>
+  	<?php if($votes!=0){ echo $j==1?'<span class="badge badge-pill badge-success">Winner</span>':''; }?>
 
-</head>
-<body>
+</div> 
 
-</body>
-</html>
+		</div>
+
+<?php } ?>
+</div>       
+ </div>
+		<?php
+		if($i==3){
+			echo "<div class='w-100'></div>";
+		}
+	}
+	?>
+ 
+</div>
+</div>
+
+ <?php  ?>
+
+
+<?php include_once('common/footer.php'); ?>

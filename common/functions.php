@@ -60,7 +60,21 @@ $sql="SELECT DISTINCT(voter) from voting_details where  voted='$email'";
   $count=mysqli_num_rows($result);  
   return $count;
 }
+function get_posts($conn){
+$sql="SELECT DISTINCT(post) from register where post<>''";
+  $result=mysqli_query($conn,$sql);
+$count_p=mysqli_num_rows($result); 
+    if($count_p > 0){ 
+  while($row=mysqli_fetch_array($result))
+     {
+        $countp[] = $row;
+    
+    }
+      // print_r($count);
 
+    return $countp;
+  }
+}
 function get_voting_details($conn){
 $sql="SELECT * from start_vote";
   $result=mysqli_query($conn,$sql);
@@ -98,6 +112,13 @@ function get_all_nominee_request($conn){
 
 function check_table($conn,$table){
 $sql="SELECT * from $table";
+  $result=mysqli_query($conn,$sql);
+  $count=mysqli_num_rows($result);  
+  return $count;
+}
+
+function check_announced($conn){
+$sql="SELECT * from announcements where announced='true'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);  
   return $count;

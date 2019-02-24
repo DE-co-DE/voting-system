@@ -9,14 +9,14 @@ include_once('../common/functions.php');
       <div class="col-12 ">
         <nav>
           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+            <a class="nav-item nav-link  <?php echo @$_GET['announce_status']?'':'active'; ?>" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Nominess</a>
             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Nominee Requests</a>
-            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Anouncements</a>
+            <a class="nav-item nav-link  <?php echo @$_GET['announce_status']?' active':''; ?>"" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Anouncements</a>
           </div>
         </nav>
         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="tab-pane fade show <?php echo @$_GET['announce_status']?'':'active'; ?>" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           	<div class="container-fluid mt-5 w-100">
           		<div class="row">
           				<div class=" col-md-3  ">
@@ -110,10 +110,20 @@ include_once('../common/functions.php');
 		          </div>
 		          </div>
           </div>
-          <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+          <div class="tab-pane fade  <?php echo @$_GET['announce_status']?'show active':''; ?>" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
            <div class="d-block mt-5">
             <div class="col-md-4 mx-auto">
-            <a href="submit.php?submit_announcement=true" class="btn btn-outline-dark btn-block p-3 ">Announce Result</a>
+            <?php	
+  if(@$_GET['announce_status']){
+      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>ERROR!</strong> Some error occured try again!
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }?>
+
+            <a href="../submit.php?submit_announcement=true" class="btn btn-outline-dark btn-block p-3 ">Announce Result</a>
           </div>
         </div>
         </div>

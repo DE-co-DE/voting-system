@@ -52,18 +52,18 @@ if(!empty($_SESSION['user_type'])){
             </div>
         </div>
         
-        <div class="col-md-4 mt-4">
-            <div class="card border-warning mx-sm-1 p-3">
-                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-hand-o-up" aria-hidden="true"></span></div>
-                <div class="text-warning text-center mt-3"><h4>Voting</h4></div>
-                <div class="text-warning text-center mt-2"><h1></h1></div>
-            </div>
-        </div>
           <div class="col-md-4 mt-4">
             <div class="card border-secondary mx-sm-1 p-3">
                 <div class="card border-secondary shadow text-secondary p-3 my-card" ><span class="fa fa-thumbs-up" aria-hidden="true"></span></div>
                 <div class="text-secondary text-center mt-3"><h4>Results</h4></div>
-                <div class="text-secondary text-center mt-2"><h1></h1></div>
+                <div class="text-secondary text-center mt-2"><h3><a href="results.php" class="text-secondary ">
+                    <?php $announced=check_announced($conn);
+                    if($announced=='0'){
+                        echo 'Announced';
+                    }
+                    ?>
+
+                </a></h3></div>
             </div>
         </div>
 

@@ -2,6 +2,7 @@
 include_once('common/header.php');
 include_once('common/functions.php');
 include_once('database/connection.php');
+date_default_timezone_set("Asia/kolkata");
 
 if(isset($_POST['submit_student_register'])){
   $f_name=$_POST['f_name'];
@@ -194,6 +195,20 @@ else{
 }
 }
 
+
+if(isset($_GET['submit_announcement'])){ // announcements
+ // $announcement=$_GET['announcement'];
+ $date=date('Y-m-d');
+ $sql = "INSERT INTO `announcements` (`announced`, `announce_date`) VALUES('true','$date')";
+
+  $result=mysqli_query($conn,$sql);
+  if($result){
+    header('location:results.php');
+  } else{
+    header('location:Admin/dashboard.php?announce_status=error');
+  }
+
+}
 //accept or reject nominee
 
 if(isset($_GET['nominee_request'])){
