@@ -2,6 +2,40 @@
 include_once('common/header.php');
 include_once('database/connection.php');
 include_once('common/functions.php');
+$get_votes=get_vote_dates($conn,'start_vote');
+  //$day=1;
+$not_started='';
+  $day=date('d');
+  //$month=3;
+  $month=date('m');
+   $start_month=$get_votes['s_month'];
+   $start_day=$get_votes['s_day'];
+  $end_month=$get_votes['e_month'];
+   $end_day=$get_votes['e_day'];
+  //echo intval($day);
+ //echo intval($start_day);
+  if(intval($month)<intval($start_month)){
+    echo $not_started= '<p class="alert alert-danger">Voting is not started yet</p>';
+
+  }elseif(intval($month) == intval($start_month))
+{
+
+if($day<$start_day)
+{
+echo $not_started= '<p class="alert alert-danger">Voting is not started yet</p>';
+}
+}
+ if(intval($month)>intval($end_month)){
+    echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
+
+  }elseif(intval($month) == intval($end_month))
+{
+
+if($day>$end_day)
+{
+echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
+}
+}
 ?>
 
 	<div class="col-md-4 offset-md-4 mt-3 ">
@@ -70,14 +104,15 @@ include_once('common/functions.php');
                         <p class="card-text">Academic Year - <?php echo $nominee['year'] ?></p>
                         <p class="card-text">Department - <?php echo $nominee['department'] ?></p>
                     <?php 
-                    if(@!$_GET['vote_status']){
+                    if(@!$_GET['vote_status'] ){
                         if(@$_GET['post']=='request') {?>  
                              <a class="btn  btn-outline-secondary " href="Admin/dashboard.php"><span class="fa fa-arrow-left"></span> BACK</a>
                         <a class="btn  btn-outline-success " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=accepted">ACCEPT<span class="fa fa-thumbs-o-up"></span></a>
                         <a class="btn  btn-outline-danger " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=declined" >DECLINE <span class="fa fa-thumbs-o-down"></span></a>
-                    <?php } else{ ?>   
+                    <?php } else{ if($not_started==''){ ?>   
                     <a class="btn  btn-outline-info w-100" href="submit.php?by=<?php echo $_SESSION['user_id'] ?>&to=<?php echo $_GET['nominee'] ?> " >VOTE <span class="fa fa-thumbs-o-up"></span></a>  
                     <?php }
+                  }
                     } ?>                 
                     </div>
                 </div>

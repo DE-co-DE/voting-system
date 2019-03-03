@@ -1,10 +1,10 @@
 <?php 
 $count_a=array();
-function otp_form($email){
+function otp_form($email,$type){
   return '<div class="container">
 <div class=" row position-relative mt-5">
   <div class=" col-md-6 offset-3 ">
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success" role="alert"><strong>'.$type.' ! </strong>
   We have mailed you a otp on your email id '.$email.'!
 </div>
   <div class="card shadow">
@@ -116,6 +116,12 @@ $sql="SELECT * from $table";
   $count=mysqli_num_rows($result);  
   return $count;
 }
+function get_vote_dates($conn,$table){
+ $sql="SELECT MONTH(start_date) as s_month ,DAY(start_date) as s_day,MONTH(end_date) as e_month ,DAY(end_date) as e_day from $table";
+  $result=mysqli_query($conn,$sql);
+  $counte=mysqli_fetch_array($result);  
+  return $counte;
+}
 
 function check_announced($conn){
 $sql="SELECT * from announcements where announced='true'";
@@ -155,6 +161,30 @@ function forget_pwd(){
   <div class="form-group">
   </div>
    <button type="submit" class="btn btn-primary mx-auto d-block col-md-4" name="forget_pwd_submit">Proceed</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>';
+}
+function change_pwd_form($email,$type){
+  return '<div class="container">
+<div class=" row position-relative mt-5">
+  <div class=" col-md-6 offset-3 ">
+  <div class="card shadow">
+  <div class="card-header display-4 text-info text-center">NEW PASSWORD!</div>
+  <div class="card-body">
+<form action="" method="post">
+  <div class="form-group">
+    <label for="otp">  Enter your new password</label>
+    <input type="text" class="form-control" id="otp" name="password" required>
+    <input type="hidden" class="form-control" id="otp" name="email" value="'.$email.'">
+    <input type="hidden" class="form-control" id="otp" name="type" value="'.$type.'">
+  </div>
+  <div class="form-group">
+  </div>
+   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4" name="change_pwd_submit">Proceed</button>
 </form>
 </div>
 </div>

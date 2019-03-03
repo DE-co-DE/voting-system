@@ -14,6 +14,8 @@ if(!empty($_SESSION['user_type'])){
  }
 }
 ?>
+    <?php $get_details=get_voting_details($conn); ?>
+
 <div class="row col-md-12 position-relative">
 	<img src="assets/images/voting-09.jpg" class="img-fluid w-100" style="height: 400px">
 <div class="position-absolute banner-content bg-dark-transparent shadow ">
@@ -58,7 +60,7 @@ if(!empty($_SESSION['user_type'])){
                 <div class="text-secondary text-center mt-3"><h4>Results</h4></div>
                 <div class="text-secondary text-center mt-2"><h3><a href="results.php" class="text-secondary ">
                     <?php $announced=check_announced($conn);
-                    if($announced=='0'){
+                    if($announced!='0'){
                         echo 'Announced';
                     }
                     ?>
@@ -75,7 +77,6 @@ if(!empty($_SESSION['user_type'])){
 	<h3 class="bg-info p-3 text-white">Notice Board</h3>
 	<hr>
 	<marquee direction="up">
-    <?php $get_details=get_voting_details($conn); ?>
                             
                             <h4 class="alert alert-secondary">START DATE</h4>
                             <p class="text-secondary"><?php echo $get_details['start_date']?$get_details['start_date']:'Not updated yet'?></p>

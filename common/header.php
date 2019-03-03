@@ -1,7 +1,8 @@
 <?php 
 session_start();
 define("app_path","http://localhost/voting system/" ,true); ?>
-
+<?php date_default_timezone_set("Asia/kolkata");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@ define("app_path","http://localhost/voting system/" ,true); ?>
 <body>
 <!-- <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
  --><nav class="navbar navbar-light navbar-expand-lg bg-info">
- <a class="navbar-brand" href="<?php echo app_path; ?>">Polling system</a>
+ <a class="navbar-brand" href="<?php echo app_path; ?>">  VOTING SYSTEM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,13 +29,13 @@ define("app_path","http://localhost/voting system/" ,true); ?>
         <a class="nav-link" href="<?php echo app_path; ?>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" href="<?php echo app_path; ?>about_us.php">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact us</a>
+        <a class="nav-link" href="<?php echo app_path; ?>contact_us.php">Contact us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
+        <a class="nav-link" href="<?php echo app_path; ?>about_us.php">Help</a>
       </li>
       <?php if(isset($_SESSION['user_id'])){?>
   <li class="nav-item">

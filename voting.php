@@ -9,6 +9,7 @@ include_once('common/functions.php');
     header('location:'.app_path);
   exit();
  }
+ 
  ?>
 
     <div class="container-fluid">
@@ -26,6 +27,7 @@ include_once('common/functions.php');
             </div>
             <div class="col-md-7">
                 <div class="bd-example" data-example-id="">
+
 <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">

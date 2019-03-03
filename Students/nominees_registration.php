@@ -6,6 +6,28 @@ include_once('../common/functions.php');
   	$email=$_SESSION['user_id'];
   	$nominee=get_user_by_email($conn,$email);
   	//print_r($nominee); exit;
+    $get_votes=get_vote_dates($conn,'start_vote');
+  //$day=1;
+$not_started='';
+  $day=date('d');
+  //$month=3;
+  $month=date('m');
+   $start_month=$get_votes['s_month'];
+   $start_day=$get_votes['s_day'];
+  $end_month=$get_votes['e_month'];
+   $end_day=$get_votes['e_day'];
+ 
+ if(intval($month)>intval($end_month)){
+    echo $not_started= '<p class="alert alert-danger">You can not register now as voting has been closed.</p>';
+
+  }elseif(intval($month) == intval($end_month))
+{
+
+if($day>$end_day)
+{
+echo $not_started= '<p class="alert alert-danger">You can not register now as voting has been closed.</p>';
+}
+}
   	 ?>
 <div class="container">
 <div class=" row position-relative mt-5">
@@ -141,8 +163,9 @@ include_once('../common/functions.php');
   </div>
   </div>
 
-
+<?php if($not_started==''){ ?>
   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4 shadow-sm" name="submit_nominee_register">Submit</button>
+ <?php } ?>
 
 </form>
 </div>

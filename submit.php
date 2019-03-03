@@ -11,7 +11,7 @@ if(isset($_POST['submit_student_register'])){
   $year=$_POST['year'];
   $email=$_POST['email'];
   $mobile_no=$_POST['number'];
-  $password=$_POST['password'];
+  $password=md5($_POST['password']);
   $c_password=$_POST['c_password'];
   $otp=rand(1000,9999);
 
@@ -24,14 +24,16 @@ if(isset($_POST['submit_student_register'])){
         header('location:Students/student_registration.php?error_exists=exist');
 exit(0);
   }
-  $sql="INSERT INTO register ( `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`) VALUES ('student','$f_name','$l_name','$email','$mobile_no','$password','$department','$year','$otp')";
+  $timeIn10Minutes = time() + 10*60; // 10 minutes * 60 seconds/minute
+  $now = date('His', $timeIn10Minutes);
+  $sql="INSERT INTO register ( `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`,`otp_expire`) VALUES ('student','$f_name','$l_name','$email','$mobile_no','$password','$department','$year','$otp','$now')";
   $result=mysqli_query($conn,$sql);
   if($result){
     $subject="OTP of registeration form";
 $message="You have received an OTP from voting system.<br>Use this OTP to proceed your registration proceess<br><br><h1>".$otp."</h1>";
     $sendmail=sendmail($email,$message,$subject);
     if($sendmail=='send'){
-      echo     otp_form($email); //calling otp function
+      echo     otp_form($email,'Success'); //calling otp function
 
     } else{
       echo"<h1>Some error occured please try again</h1>";
@@ -47,22 +49,64 @@ if(isset($_POST['otp_submit'])){
 
   $email=$_POST['email'];
    $otp=$_POST['otp'];
- 
+  
+  $t = time();
+  // will make like: '151720'
+  $now = date('His', $t);
 
-  $sql="SELECT otp from register where otp='$otp' and email='$email'";
+
+  $sql="SELECT * from register where otp='$otp' and email='$email'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);
+  $fetch=mysqli_fetch_array($result);
+
+  // compare strings
+$comp=$fetch['otp_expire'];
+
+  if($comp < $now){
+  echo "OTP Expired<a href='submit.php?resend=".$email."'>Resend</a>";
+
+exit(0);
+ }
 
   if($count > 0){
+     $sql2="UPDATE  register SET `otp_expire`='matched' Where `email`='$email'";
+     $result2=mysqli_query($conn,$sql2);
     header('location:Students/student_login.php?msg=registered');
   } else{
-echo "OTP is not matched <a href='submit.php?resend=".$email."'>Retry</a>";
+echo "OTP is not matched <a href='submit.php?retry=".$email."'>Retry</a>";
   }
 }
 //resend otp 
 
 if(isset($_GET['resend'])){
-   echo otp_form($_GET['resend']); //calling otp function
+  // echo otp_form($_GET['resend'],'resend'); 
+   $email=$_GET['resend'];
+     $otp2=rand(1000,9999);    
+  $timeIn10Minutes2 = time() + 10*60; // 10 minutes * 60 seconds/minute
+  $now2 = date('His', $timeIn10Minutes2);
+     $sql="UPDATE  register SET `otp`='$otp2',`otp_expire`='$now2' Where `email`='$email'";
+     $result2=mysqli_query($conn,$sql);
+  if($result2){
+    $subject="OTP of registeration form";
+$message="You have received an OTP from voting system.<br>Use this OTP to proceed your registration proceess<br><br><h1>".$otp2."</h1>";
+    $sendmail=sendmail($email,$message,$subject);
+    if($sendmail=='send'){
+      echo     otp_form($email,'Resend'); //calling otp function
+
+    } else{
+      echo"<h1>Some error occured please try again</h1>";
+    }
+  } else{
+    echo mysqli_error($conn);
+
+  }
+
+
+}
+//retry 
+if(isset($_GET['retry'])){
+   echo otp_form($_GET['retry'],'Retry'); //calling otp function
 
 }
 
@@ -76,14 +120,26 @@ if(isset($_GET['forget_pwd'])){
 if(isset($_POST['student_login'])){
 
   $email=$_POST['email'];
-   $password=$_POST['password'];
+   $password=md5($_POST['password']);
    $type=$_POST['type'];
  
 if($type=='student'){
-    $sql="SELECT * from register where password='$password' and email='$email' and user_type='student'";
+    $sql="SELECT * from register where password='$password' and email='$email' and user_type='student' and `otp_expire`='matched'";
 } else{
     $sql="SELECT * from register where password='$password' and email='$email' and user_type='nominee'";
 }
+    @$remember=$_POST['remember'];
+    if(!empty($_POST["remember"])) {
+        setcookie ("login_email",$_POST["email"],time()+ (10 * 365 * 24 * 60 * 60));
+        setcookie ("password",$_POST["password"],time()+ (10 * 365 * 24 * 60 * 60));
+      } else {
+        if(isset($_COOKIE["login_email"])) {
+          setcookie ("login_email","");
+        }
+        if(isset($_COOKIE["password"])) {
+          setcookie ("password","");
+        }
+      }
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);
   $row=mysqli_fetch_array($result);
@@ -122,9 +178,20 @@ $sql="UPDATE start_vote set start_date='$voting_start' ,end_date='$voting_end',r
 if(isset($_POST['admin_login'])){
 
   $email=$_POST['email'];
-   $password=$_POST['password'];
+   $password=md5($_POST['password']);
  
-
+@$remember=$_POST['remember'];
+    if(!empty($_POST["remember"])) {
+        setcookie ("admin_email",$_POST["email"],time()+ (10 * 365 * 24 * 60 * 60));
+        setcookie ("admin_password",$_POST["password"],time()+ (10 * 365 * 24 * 60 * 60));
+      } else {
+        if(isset($_COOKIE["admin_email"])) {
+          setcookie ("admin_email","");
+        }
+        if(isset($_COOKIE["admin_password"])) {
+          setcookie ("admin_password","");
+        }
+      }
   $sql="SELECT * from admin where password='$password' and email='$email'";
   $result=mysqli_query($conn,$sql);
   $count=mysqli_num_rows($result);
@@ -232,8 +299,60 @@ if(isset($_GET['nominee_request'])){
 
   }
 }
+//change pwd
 
+if(isset($_POST['change_pwd_submit'])){
+   $password=md5($_POST['password']);
+   $email=$_POST['email'];
+     $type=$_POST['type'];
 
+  //exit();
+  if($type!='admin'){
+      $sql="UPDATE  register SET   `password`='$password' Where `email`='$email' and user_type='$type'"; 
+
+  } else{
+          $sql="UPDATE  admin SET   `password`='$password' Where `email`='$email' and user_type='$type'"; 
+  }
+
+  
+  $result=mysqli_query($conn,$sql);
+  if($result){
+              $_SESSION['change_pwd']="Your password changed succesfully";
+
+if($type!='admin'){
+
+    header('location:Students/student_login.php?'.$type.'=login');
+  }elseif($count['user_type']=='admin'){
+    header('location:Admin/login.php');
+  } 
+  }
+}
+if(isset($_GET['change_pwd_form'])){
+  $email=$_GET['change_pwd_form'];
+  $type=$_GET['type'];
+
+echo change_pwd_form($email,$type);
+}
+
+//contact page sendmail 
+
+if(isset($_POST['contact_sendmail'])){
+  $email=$_POST['email'];
+  $name=$_POST['name'];
+  $subject=$_POST['subject'];
+  $msg=$_POST['msg'];
+  $message="Email id -".$email."<br>Name- ".$name."<br>subject- ".$subject."<br>message- ".$msg;
+  $mainmail="deep7rd@gmail.com";
+  $sub="You have received a feedback from your website voting system.";
+   $sendmail=sendmail($mainmail,$message,$sub);
+    if($sendmail=='send'){
+          $_SESSION['contact_mail']="Thank You. We have received your message and we will get back to you soon.";
+    header('location:contact_us.php');
+   
+} else{
+  echo "error";
+}
+}
 //forgot password
 
 if(isset($_POST['forget_pwd_submit'])){
@@ -241,9 +360,10 @@ if(isset($_POST['forget_pwd_submit'])){
   $email=$_POST['email'];
  
 $count=get_user_by_email($conn,$email);
+//print_r($count); //exit();
   if(!empty($count)){
      $subject="Request For Password";
-$message="You have received an password from voting system.<br>Use this password to proceed with login.<br><br><h1><i>".$count['password']."</i></h1>";
+$message="You have received an password from voting system.<br>Use this password to proceed with login.<br><br><a href='".app_path."submit.php?change_pwd_form=".$email."&type=".$count['user_type']."'><i>Click here to change the password</i></a>";
     $sendmail=sendmail($email,$message,$subject);
     if($sendmail=='send'){
           $_SESSION['forget_pwd']="set";
@@ -252,6 +372,8 @@ $message="You have received an password from voting system.<br>Use this password
   }elseif($count['user_type']=='admin'){
     header('location:Admin/login.php');
   } 
+} else{
+  echo "error";
 }
 }else{
 echo '

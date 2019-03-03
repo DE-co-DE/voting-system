@@ -16,7 +16,15 @@
 </div>';
 unset($_SESSION['forget_pwd']);
   }
-
+if(!empty($_SESSION['change_pwd'])){
+       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong>'.$_SESSION['change_pwd'].'.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+unset($_SESSION['change_pwd']);
+  }
   if(@$_GET['error']){
       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>ERROR!</strong> Incorrect username or password!
@@ -37,16 +45,16 @@ unset($_SESSION['forget_pwd']);
 <form action="../submit.php" method="post">
   <div class="form-group">
     <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email" name="email">
+    <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_COOKIE["login_email"])) { echo $_COOKIE["login_email"]; } ?>">
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd" name="password">
+    <input type="password" class="form-control" id="pwd" name="password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>">
     <input type="hidden" class="form-control"  name="type" value="<?php echo @$_GET['nominee']?'nominee':'student'?>">
   </div>
   <div class="form-group form-check d-flex justify-content-between">
     <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"> Remember me
+      <input class="form-check-input" type="checkbox" <?php if(isset($_COOKIE["login_email"])) { ?> checked <?php } ?> name="remember"> Remember me
     </label>
     <label>
       <a href="../submit.php?forget_pwd=true" class="text-right  mt-3 ">Lost your password?</a>

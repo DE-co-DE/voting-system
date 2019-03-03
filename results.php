@@ -2,7 +2,7 @@
  include_once('database/connection.php'); 
 include_once('common/functions.php');
  $announced=check_announced($conn);
-                    if($announced=='1'){
+                    if($announced==0){
 header('location:index.php');  }   ?>
 <div class="container-fluid mt-5">
 <div class="row">

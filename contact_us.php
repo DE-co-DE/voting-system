@@ -1,15 +1,79 @@
-<!DOCTYPE html>
-<html>
-<head>
-		<title>voting::Contact Us</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php 
+include_once('database/connection.php');
+include_once('common/header.php');
+include_once('common/functions.php'); ?>
+<div class="container mt-5">
+	 <div class="row">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--Grid column-->
+        <div class="col-lg-5 mx-auto">
+<?php if(!empty($_SESSION['contact_mail'])){
+       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong>'.$_SESSION['contact_mail'].'.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+unset($_SESSION['contact_mail']);
+  }?>
+            <!--Form with header-->
+            <div class="card border-info rounded-0">
 
-</head>
-<body>
+                <div class="card-header p-0">
+                    <div class="bg-info text-white text-center py-2">
+                        <h4> Write to us:</h4>
+                        <p class="m-0">We'll love to hear your queries.</p>
+                    </div>
+                </div>
+                <div class="card-body p-3">
+				<form action="submit.php" method="post">
+                    <!--Body-->
+                    <div class="form-group">
+                        <label>Your name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon bg-light"><i class="fa fa-user text-info"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="name" name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Your email</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-envelope text-info"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-tag prefix text-info"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username" name="subject">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-pencil text-info"></i></div>
+                            <textarea class="form-control" name="msg"></textarea>
+                        </div>
+                    </div>
 
-</body>
-</html>
+                    <div class="text-center">
+                        <button class="btn btn-info btn-block rounded-0 py-2" type="submit" name="contact_sendmail">Submit</button>
+                    </div>
+</form>
+                </div>
+
+            </div>
+            <!--Form with header-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+      
+       <!--Grid column-->
+
+    </div>
+
+</div>
+<?php include_once('common/footer.php'); ?>
