@@ -15,13 +15,12 @@ include_once('common/functions.php');
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-5 bg-dark" >
-              <div class="fixd position-fixed">
-                                <h2 class="text-center text-white display-3 pt-5 mt-5"> Vote</h2>
+            <div class="col-md-5 bg-pic" >
+              <div class="  bg-dark-transparent another">
 
+                                <h3 class="text-white font-weight-lighter text-center  py-3  "> Your vote is valuable before vote think twice. </h3>
                                 <hr class="bg-white">
-                                <h3 class="text-white-50 font-weight-lighter text-center  "> Your vote is valuable before vote think twice. </h3>
-                                <p class=" text-danger"> Note : You can vote only one person from each department.</p>
+                                <h4 class="text-info pb-3 pl-2 font-weight-normal"> Note : You can vote only one person from each department.</h4>
 
             </div>
             </div>

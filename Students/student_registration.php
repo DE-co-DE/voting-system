@@ -16,7 +16,7 @@
   	}
      if(@$_GET['error_exists']){
       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>ERROR!</strong> Student with same email id already exists!.
+  <strong>ERROR!</strong> Student with  email id does not exists!.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

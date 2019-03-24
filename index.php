@@ -24,7 +24,7 @@ if(!empty($_SESSION['user_type'])){
 </div>
 </div>
 
-<div class="container mt-3">
+<div class="container-fluid mt-3">
 	<div class="row">
 	<div class="col-lg-9 col-md-9 col-sm-9 col-12">
 

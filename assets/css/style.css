@@ -13,6 +13,14 @@
 .bg-dark-transparent {
     background-color: #343a40d4!important;
 }
+.another{
+    margin-top: 45%;
+}
+.bg-pic{
+    background-image: url('../images/votebutton.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 a{
 	transition: .5s;
 

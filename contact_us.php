@@ -6,7 +6,20 @@ include_once('common/functions.php'); ?>
 	 <div class="row">
 
         <!--Grid column-->
-        <div class="col-lg-5 mx-auto">
+        <div class="col-sm-6">
+<div class="fusion-column-wrapper"><h2 class="text-title " ><i class="fa fa-envelope"></i> Contact Us</h2>
+<h3 class="text-info pt-4">Email :</h3>
+<p>1shindetejashree@gmail.com</p>
+<h3 class="text-info pt-4">Address :</h3>
+<div>Shivajirao S. Jondhale College Of Engineering
+Sonarpada, <br> Dombivli(E). Dist – Thane<br>
+Pin code – 421204
+</div>
+<h3 class="text-info pt-4">Contact Number :</h3>
+<p>+91 9869936566</p>
+<div class="fusion-clearfix"></div></div>
+        </div>
+        <div class="col-sm-5">
 <?php if(!empty($_SESSION['contact_mail'])){
        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong>'.$_SESSION['contact_mail'].'.
@@ -33,6 +46,13 @@ unset($_SESSION['contact_mail']);
                         <div class="input-group">
                             <div class="input-group-addon bg-light"><i class="fa fa-user text-info"></i></div>
                             <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="name" name="name">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label>Contact Number</label>
+                        <div class="input-group">
+                            <div class="input-group-addon bg-light"><i class="fa fa-phone text-info"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Number" name="number">
                         </div>
                     </div>
                     <div class="form-group">

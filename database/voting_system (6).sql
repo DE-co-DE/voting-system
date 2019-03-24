@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2019 at 08:40 AM
+-- Generation Time: Mar 24, 2019 at 07:25 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.3.2
 
@@ -78,19 +78,20 @@ CREATE TABLE `register` (
   `is_nominee` varchar(100) NOT NULL,
   `profile_pic` varchar(500) NOT NULL,
   `post` varchar(255) NOT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `acheivements` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register`
 --
 
-INSERT INTO `register` (`id`, `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`, `otp_expire`, `is_nominee`, `profile_pic`, `post`, `status`) VALUES
-(4, 'nominee', 'pradeep', 'yadav', 'deep7w@gmail.com', '8452062425', '123', 'IT', '2015', 8116, '00:00:00', '', '', 'TPO', 'pending'),
-(5, 'student', 'deepak', 'yadav', 'deepak@gmail.com', '8452062425', '123', 'IT', '2015', 7951, '00:00:00', '', '', '', NULL),
-(6, 'nominee', 'deep', 'yadav', 'deep7@gmail.com', '8452062425', '123', 'BE', '2016', 9271, '00:00:00', 'nominee', '', 'treasurer', 'accepted'),
-(8, 'student', 'abc', 'xyz', 'deepakyadav.web@gmail.com', '8452062425', '123', 'BA', '4th year', 4931, '00:00:00', '', '', '', NULL),
-(11, 'student', 'one', 'two', 'deep7rd@gmail.com', '8452062425', 'e10adc3949ba59abbe56e057f20f883e', 'BE', '4th year', 5395, 'matched', '', '', '', NULL);
+INSERT INTO `register` (`id`, `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`, `otp_expire`, `is_nominee`, `profile_pic`, `post`, `status`, `acheivements`) VALUES
+(4, 'nominee', 'pradeep', 'yadav', 'deep7w@gmail.com', '8452062425', '123', 'IT', '2015', 8116, '00:00:00', '', '', 'TPO', 'pending', NULL),
+(5, 'student', 'deepak', 'yadav', 'deepak@gmail.com', '8452062425', '123', 'IT', '2015', 7951, '00:00:00', '', '', '', NULL, NULL),
+(6, 'nominee', 'deep', 'yadav', 'deep7@gmail.com', '8452062425', '123', 'BE', '2016', 9271, '00:00:00', 'nominee', '', 'treasurer', 'accepted', NULL),
+(8, 'student', 'abc', 'xyz', 'deepakyadav.web@gmail.com', '8452062425', '123', 'BA', '4th year', 4931, '00:00:00', '', '', '', NULL, NULL),
+(11, 'student', 'one', 'two', 'deep7rd@gmail.com', '8452062425', 'e10adc3949ba59abbe56e057f20f883e', 'BE', '4th year', 5395, 'matched', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
