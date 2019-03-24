@@ -26,7 +26,7 @@ exit(0);
   }
   $timeIn10Minutes = time() + 10*60; // 10 minutes * 60 seconds/minute
   $now = date('His', $timeIn10Minutes);
-  
+
  $sql="UPDATE  register SET   `user_type`='student',`password`='$password',`otp`='$otp',`otp_expire`='$now', `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year' Where `email`='$email'";
 
   $result=mysqli_query($conn,$sql);
@@ -213,6 +213,7 @@ if(isset($_POST['submit_nominee_register'])){
   $l_name=$_POST['l_name'];
   $department=$_POST['department'];
   $year=$_POST['year'];
+  $achievements=$_POST['achievements'];
   $post=$_POST['post'];
   $email=$_POST['email'];
   $mobile_no=$_POST['number'];
@@ -230,7 +231,7 @@ if(isset($_POST['submit_nominee_register'])){
   }
 }
   
-  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`profile_pic`='$filename',`status`='pending' Where `email`='$email'";
+  $sql="UPDATE  register SET    `first_name`='$f_name', `last_name`='$l_name', `mobile_no`='$mobile_no', `department`='$department', `year`='$year',`post`='$post',`profile_pic`='$filename',`status`='pending' ,`acheivements`='$achievements' Where `email`='$email'";
   $result=mysqli_query($conn,$sql);
   if($result){
         header('location:Students/nominees_registration.php?success='.$post);

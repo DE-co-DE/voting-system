@@ -35,7 +35,7 @@ define("app_path","http://localhost/voting system/" ,true); ?>
         <a class="nav-link" href="<?php echo app_path; ?>contact_us.php">Contact us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo app_path; ?>about_us.php">Help</a>
+        <a class="nav-link" href="<?php echo app_path; ?>help.php">Help</a>
       </li>
       <?php if(isset($_SESSION['user_id'])){?>
   <li class="nav-item">

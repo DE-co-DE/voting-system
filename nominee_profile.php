@@ -103,6 +103,7 @@ echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
                         <p class="card-text">Post - <?php echo $nominee['post'] ?></p>
                         <p class="card-text">Academic Year - <?php echo $nominee['year'] ?></p>
                         <p class="card-text">Department - <?php echo $nominee['department'] ?></p>
+                        <p class="card-text">Achievements - <?php echo $nominee['acheivements'] ?></p>
                     <?php 
                     if(@!$_GET['vote_status'] ){
                         if(@$_GET['post']=='request') {?>  

@@ -131,6 +131,14 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
   </div>
   </div>
   </div>
+   <div class="row">
+  <div class="col-12">
+  <div class="form-group">
+    <label for="number">Achievements</label>
+    <input type="number" class="form-control" id="number" name="achievements" value="<?php echo $nominee['acheivements'] ?>">
+  </div>
+  </div>
+  </div>
       <div class="row">
   <div class="col-12">
   <div class="form-group">
