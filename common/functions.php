@@ -61,7 +61,7 @@ $sql="SELECT DISTINCT(voter) from voting_details where  voted='$email'";
   return $count;
 }
 function get_posts($conn){
-$sql="SELECT DISTINCT(post) from register where post<>''";
+$sql="SELECT DISTINCT(post) from register where post<>'' and status='accepted'";
   $result=mysqli_query($conn,$sql);
 $count_p=mysqli_num_rows($result); 
     if($count_p > 0){ 
@@ -82,6 +82,7 @@ $sql="SELECT * from start_vote";
   return $count;
 }
 function get_all_nominees($conn){
+  $count=[];
   $sql="SELECT * from register where  is_nominee!=''";
   $result=mysqli_query($conn,$sql);
   while($row=mysqli_fetch_array($result))

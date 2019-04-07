@@ -135,7 +135,7 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
   <div class="col-12">
   <div class="form-group">
     <label for="number">Achievements</label>
-    <input type="number" class="form-control" id="number" name="achievements" value="<?php echo $nominee['acheivements'] ?>">
+    <input type="text" class="form-control" id="number" name="achievements" value="<?php echo $nominee['acheivements'] ?>">
   </div>
   </div>
   </div>
@@ -154,7 +154,7 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
   <div class="col-12">
   <div class="form-group">
   <label for="year">Select Post </label>
-<select class="form-control" name="post" <?php echo $nominee['post']?'disabled':''?> >
+<select class="form-control" name="post" <?php echo $nominee['post']?'readonly':''?> >
 	<option value="<?php echo $nominee['post'] ?>"><?php echo $nominee['post'] ?></option>
 	<option value="chair person">chair person</option>
 	<option value="president">president</option>

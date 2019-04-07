@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 07:25 PM
+-- Generation Time: Mar 25, 2019 at 06:26 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.3.2
 
@@ -74,7 +74,7 @@ CREATE TABLE `register` (
   `department` varchar(255) NOT NULL,
   `year` varchar(100) NOT NULL,
   `otp` int(255) NOT NULL,
-  `otp_expire` varchar(100) NOT NULL,
+  `otp_expire` varchar(100) DEFAULT NULL,
   `is_nominee` varchar(100) NOT NULL,
   `profile_pic` varchar(500) NOT NULL,
   `post` varchar(255) NOT NULL,
@@ -87,11 +87,24 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`id`, `user_type`, `first_name`, `last_name`, `email`, `mobile_no`, `password`, `department`, `year`, `otp`, `otp_expire`, `is_nominee`, `profile_pic`, `post`, `status`, `acheivements`) VALUES
-(4, 'nominee', 'pradeep', 'yadav', 'deep7w@gmail.com', '8452062425', '123', 'IT', '2015', 8116, '00:00:00', '', '', 'TPO', 'pending', NULL),
-(5, 'student', 'deepak', 'yadav', 'deepak@gmail.com', '8452062425', '123', 'IT', '2015', 7951, '00:00:00', '', '', '', NULL, NULL),
-(6, 'nominee', 'deep', 'yadav', 'deep7@gmail.com', '8452062425', '123', 'BE', '2016', 9271, '00:00:00', 'nominee', '', 'treasurer', 'accepted', NULL),
-(8, 'student', 'abc', 'xyz', 'deepakyadav.web@gmail.com', '8452062425', '123', 'BA', '4th year', 4931, '00:00:00', '', '', '', NULL, NULL),
-(11, 'student', 'one', 'two', 'deep7rd@gmail.com', '8452062425', 'e10adc3949ba59abbe56e057f20f883e', 'BE', '4th year', 5395, 'matched', '', '', '', NULL, NULL);
+(18, '', '', '', 'chetangdhamake@ieee.org', '', '', '', '', 0, NULL, '', '', '', '', NULL),
+(19, '', '', '', 'poojamahadeshigvan@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(20, '', '', '', '1shindetejashree@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(21, '', '', '', 'jyotiparab301097@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(22, '', '', '', 'yredkar9@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(23, '', '', '', 'riturkadam@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(24, '', '', '', 'mithilbaria98@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(25, '', '', '', 'omicarsobike@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(26, '', '', '', 'vedantsatam2gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(27, '', '', '', 'pwprajakta2909@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(28, '', '', '', 'chavanankita017@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(29, '', '', '', 'ashumane61997@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(30, '', '', '', 'ankita4kamble@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(31, '', '', '', 'sonalfarad21@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(32, '', '', '', 'yashodhantamhankar@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(33, '', '', '', 'akashhingade@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(34, '', '', '', 'niketdjogale@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL),
+(35, '', '', '', 'ishanpdusane56@gmail.com', '', '', '', '', 0, NULL, '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +128,7 @@ CREATE TABLE `start_vote` (
 --
 
 INSERT INTO `start_vote` (`id`, `start`, `start_date`, `end_date`, `result_date`, `user_id`, `winner`, `total_vote`) VALUES
-(2, NULL, '2019-02-13', '2019-02-22', '2019-02-23', NULL, NULL, NULL);
+(2, NULL, '2019-02-13', '2019-06-05', '2019-06-13', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +199,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `start_vote`

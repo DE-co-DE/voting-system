@@ -56,12 +56,13 @@ include_once('../common/functions.php');
                       
                         <p class="card-text">Academic Year - <?php echo $nominee['year'] ?></p>
                         <p class="card-text">Department - <?php echo $nominee['department'] ?></p>
+                        <p class="card-text">Achievements - <?php echo $nominee['acheivements'] ?></p>
 </div>
 </div>
 	</div>
 	<?php if($nominee['status']=='declined'){?>
 		<div class="alert alert-danger" role="alert">
- <strong>Sorry !</strong> Your request for nominee has benn rejected.<br>
+ <strong>Sorry !</strong> Your request for nominee has been rejected.<br>
  But you can still vote as student  <br>
 
  To vote click on the Vote button <a href="<?php echo app_path.'voting.php'; ?>" class="btn btn-info btn-sm">Vote</a> 

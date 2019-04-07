@@ -11,16 +11,17 @@ if(isset($_POST['submit_student_register'])){
   $year=$_POST['year'];
   $email=$_POST['email'];
   $mobile_no=$_POST['number'];
+  $password2=$_POST['password'];
   $password=sha1($_POST['password']);
   $c_password=$_POST['c_password'];
   $otp=rand(1000,9999);
 
-  if($password!=$c_password){
+  if($password2!=$c_password){
     header('location:Students/student_registration.php?error=not_matched');
     exit(0);
   }
   $check=check_user_exists($conn,$email);
-  if($check > 0){
+  if($check == 0){
         header('location:Students/student_registration.php?error_exists=exist');
 exit(0);
   }
@@ -180,7 +181,7 @@ $sql="UPDATE start_vote set start_date='$voting_start' ,end_date='$voting_end',r
 if(isset($_POST['admin_login'])){
 
   $email=$_POST['email'];
-   $password=sha1($_POST['password']);
+   $password=$_POST['password'];
  
 @$remember=$_POST['remember'];
     if(!empty($_POST["remember"])) {
@@ -288,12 +289,20 @@ if(isset($_GET['nominee_request'])){
   if($nominee_request=='declined'){
 
   $sql="UPDATE  register SET `is_nominee`='',`user_type`='student', `status`='declined' Where `email`='$email'";
+   $message="We are sorry to inform you that your request for nominee has been declined.<br><br>But you can vote to other nominnees from your <h3>Student Section</h3>";
   } else{
 
   $sql="UPDATE  register SET    `is_nominee`='nominee',`user_type`='nominee',`status`='accepted' Where `email`='$email'"; 
+   $message="<h1>Congratulation.</h1><br>We are glad to inform you that your request for nominee has been accepted.<br><br>And Now as you are nominee so you can not login from student section .<br>
+   You can see your details by logging in from <h3>Nominee Section</h3>";
   }
   $result=mysqli_query($conn,$sql);
   if($result){
+   $subject="Regarding your request for nominee.";
+   
+    $sendmail=sendmail($email,$message,$subject);
+    if($sendmail=='send'){
+    } 
         header('location:nominee_profile.php?nominee='.$email.'&tab='.$nominee_request.' & n_status=success&post=request');
 
   } else{
@@ -346,9 +355,9 @@ if(isset($_POST['contact_sendmail'])){
   $subject=$_POST['subject'];
   $msg=$_POST['msg'];
   $message="Email id -".$email."<br>Name- ".$name."<br>Number- ".$number."<br>subject- ".$subject."<br>message- ".$msg;
-  $mainmail="deep7rd@gmail.com";
+  //$mainmail="deep7rd@gmail.com";
   $sub="You have received a feedback from your website voting system.";
-   $sendmail=sendmail($mainmail,$message,$sub);
+   $sendmail=sendmail($email,$message,$sub);
     if($sendmail=='send'){
           $_SESSION['contact_mail']="Thank You. We have received your message and we will get back to you soon.";
     header('location:contact_us.php');
