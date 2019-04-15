@@ -7,6 +7,7 @@ include_once('../common/functions.php');
   	$nominee=get_user_by_email($conn,$email);
   	//print_r($nominee); exit;
     $get_votes=get_vote_dates($conn,'start_vote');
+    //print_r($get_votes);
   //$day=1;
 $not_started='';
   $day=date('d');
@@ -14,9 +15,9 @@ $not_started='';
   $month=date('m');
    $start_month=$get_votes['s_month'];
    $start_day=$get_votes['s_day'];
-  $end_month=$get_votes['e_month'];
+   $end_month=$get_votes['e_month'];
    $end_day=$get_votes['e_day'];
- 
+ if($end_month!=0){
  if(intval($month)>intval($end_month)){
     echo $not_started= '<p class="alert alert-danger">You can not register now as voting has been closed.</p>';
 
@@ -26,6 +27,7 @@ $not_started='';
 if($day>$end_day)
 {
 echo $not_started= '<p class="alert alert-danger">You can not register now as voting has been closed.</p>';
+}
 }
 }
   	 ?>
@@ -110,7 +112,6 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
 	<option value="2nd year">2nd year</option>
 	<option value="3rd yaer">3rd yaer</option>
 	<option value="4th year">4th year</option>
-	<option value="5th year">5th year</option>
 </select>
   </div>
   </div>

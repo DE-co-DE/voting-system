@@ -14,6 +14,8 @@ $not_started='';
    $end_day=$get_votes['e_day'];
   //echo intval($day);
  //echo intval($start_day);
+    if($end_month!=0){
+
   if(intval($month)<intval($start_month)){
     echo $not_started= '<p class="alert alert-danger">Voting is not started yet</p>';
 
@@ -34,6 +36,7 @@ echo $not_started= '<p class="alert alert-danger">Voting is not started yet</p>'
 if($day>$end_day)
 {
 echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
+}
 }
 }
 ?>
