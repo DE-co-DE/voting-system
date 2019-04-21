@@ -14,6 +14,7 @@ define("app_path","http://localhost/voting system/" ,true); ?>
     <link rel="stylesheet" href="<?php echo app_path; ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo app_path; ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo app_path; ?>assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo app_path; ?>assets/css/bootstrap-datepicker.min.css">
 
 </head>
 <body>

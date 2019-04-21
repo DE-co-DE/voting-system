@@ -10,9 +10,16 @@ include_once('../common/functions.php');
     //print_r($get_votes);
   //$day=1;
 $not_started='';
+ $get_details=get_voting_details($conn); 
+
+         if(strtotime($get_details['start_date']) <= strtotime(date('Y-m-d'))){ 
+ echo $not_started= '<p class="alert alert-danger">You can not register now as voting has been started.</p>';
+         } 
+
   $day=date('d');
   //$month=3;
   $month=date('m');
+  
    $start_month=$get_votes['s_month'];
    $start_day=$get_votes['s_day'];
    $end_month=$get_votes['e_month'];
@@ -31,6 +38,8 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
 }
 }
   	 ?>
+     <?php if($not_started==''){ ?>
+
 <div class="container">
 <div class=" row position-relative mt-5">
 
@@ -172,9 +181,7 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
   </div>
   </div>
 
-<?php if($not_started==''){ ?>
   <button type="submit" class="btn btn-primary mx-auto d-block col-md-4 shadow-sm" name="submit_nominee_register">Submit</button>
- <?php } ?>
 
 </form>
 </div>
@@ -182,4 +189,6 @@ echo $not_started= '<p class="alert alert-danger">You can not register now as vo
 </div>
 </div>
 </div>
+ <?php } ?>
+
 <?php include_once('../common/footer.php'); ?>

@@ -76,8 +76,16 @@ if(!empty($_SESSION['user_type'])){
 <div class="col-lg-3 co-md-9 col-sm-9 col-12">
 	<h3 class="bg-info p-3 text-white">Notice Board</h3>
 	<hr>
+
+
 	<marquee direction="up">
-                            
+        <?php if(strtotime($get_details['start_date']) < strtotime(date('Y-m-d'))){ ?>
+ <h5 class="alert alert-warning text-capitalize">Students who wants to apply for nominees can register before the start date <?php echo $get_details['start_date']?$get_details['start_date']:''?> of voting</h5>
+<?php }else{?>
+ <h5 class="alert alert-warning text-capitalize">Nominees Registration has been closed.</h5>
+    <?php }?>
+     
+                           
                             <h4 class="alert alert-secondary">START DATE</h4>
                             <p class="text-secondary"><?php echo $get_details['start_date']?$get_details['start_date']:'Not updated yet'?></p>
 

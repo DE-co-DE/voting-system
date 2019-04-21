@@ -49,18 +49,18 @@ include_once('../common/functions.php');
 					</div>';
 					    }
 					    ?>
-          	<form action="../submit.php" method="post">
+          	<form action="../submit.php" method="post" >
           		<div class="form-group">
           	<label class="text-secondary">Select the Start date of vote</label>
-          	<input type="date" name="voting_start" value="<?php echo @$get_details['start_date']?@$get_details['start_date']:''?>" class="form-control">
+          	<input type="text" name="voting_start" value="<?php echo @$get_details['start_date']?@$get_details['start_date']:''?>" class="form-control datepick">
           </div>
           <div class="form-group">
           	<label class="text-secondary">Select the End date of vote</label>
-          	<input type="date" name="voting_end" value="<?php echo @$get_details['end_date']?@$get_details['end_date']:''?>" class="form-control">
+          	<input type="text" name="voting_end" value="<?php echo @$get_details['end_date']?@$get_details['end_date']:''?>" class="form-control datepick">
           </div>
           <div class="form-group">
           	<label class="text-secondary">Select the Result date of vote</label>
-          	<input type="date" name="voting_result"value="<?php echo @$get_details['result_date']?@$get_details['result_date']:''?>" class="form-control">
+          	<input type="text" name="voting_result"value="<?php echo @$get_details['result_date']?@$get_details['result_date']:''?>" class="form-control datepick">
           </div>
           	<br>
             <button class="btn btn-info btn-block" type="submit" name="voting_date_submit">Submit the date of voting</button>

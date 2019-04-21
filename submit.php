@@ -159,9 +159,9 @@ if($type=='student'){
 //admin voting date submission 
 if(isset($_POST['voting_date_submit'])){
 
-  $voting_start=$_POST['voting_start'];
-  $voting_end=$_POST['voting_end'];
-  $voting_result=$_POST['voting_result'];
+  $voting_start=date('Y-m-d'  ,strtotime($_POST['voting_start']));
+  $voting_end=date('Y-m-d'  ,strtotime($_POST['voting_end']));
+  $voting_result=date('Y-m-d' ,strtotime($_POST['voting_result']));
  
  $sql_check=check_table($conn,'start_vote');
 if($sql_check>0){

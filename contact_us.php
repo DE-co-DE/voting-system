@@ -45,35 +45,35 @@ unset($_SESSION['contact_mail']);
                         <label>Your name</label>
                         <div class="input-group">
                             <div class="input-group-addon bg-light"><i class="fa fa-user text-info"></i></div>
-                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="name" name="name">
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="name" name="name" required>
                         </div>
                     </div>
                       <div class="form-group">
                         <label>Contact Number</label>
                         <div class="input-group">
                             <div class="input-group-addon bg-light"><i class="fa fa-phone text-info"></i></div>
-                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Number" name="number">
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Number" name="number" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Your email</label>
                         <div class="input-group mb-2 mb-sm-0">
                             <div class="input-group-addon bg-light"><i class="fa fa-envelope text-info"></i></div>
-                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email" name="email">
+                            <input type="email" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Subject</label>
                         <div class="input-group mb-2 mb-sm-0">
                             <div class="input-group-addon bg-light"><i class="fa fa-tag prefix text-info"></i></div>
-                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username" name="subject">
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Subject" name="subject">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
                         <div class="input-group mb-2 mb-sm-0">
                             <div class="input-group-addon bg-light"><i class="fa fa-pencil text-info"></i></div>
-                            <textarea class="form-control" name="msg"></textarea>
+                            <textarea class="form-control" name="msg" required></textarea>
                         </div>
                     </div>
 

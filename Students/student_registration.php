@@ -24,7 +24,7 @@
     }
     ?>
   <div class="card-body">
-<form action="<?php echo app_path; ?>submit.php" method="post">
+<form action="<?php echo app_path; ?>submit.php" method="post" id="submit_reg">
 
 	<div class="row">
 	<div class="col-sm-6 col-12">
@@ -68,7 +68,7 @@
 	<div class="col-12">
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" name="email">
+    <input type="email" class="form-control" id="email" name="email" required>
   </div>
   </div>
   </div>
@@ -84,7 +84,7 @@
   	<div class=" col-12">
   <div class="form-group">
     <label for="pwd">Password</label>
-    <input type="password" name="password" class="form-control" id="pwd">
+    <input type="password" name="password" minlength="8"  required class="form-control" id="pwd">
   </div>
   </div>
 </div>
@@ -92,13 +92,13 @@
   	<div class="col-12">
   <div class="form-group">
     <label for="c_pwd">Confirm Password</label>
-    <input type="password" name="c_password" class="form-control" id="c_pwd">
+    <input type="password" name="c_password" minlength="8"  required class="form-control" id="c_pwd">
   </div>
   </div>
 </div>
 
 
-  <button type="submit" class="btn btn-primary mx-auto d-block col-md-4 shadow-sm" name="submit_student_register">Submit</button>
+  <button type="submit" class="btn btn-primary mx-auto d-block col-md-4 shadow-sm" name="submit_student_register" >Submit</button>
     <a href="student_login.php" class="text-center d-block mt-3 text-capitalize "><span class="text-dark">Back 2</span> Login</a>
 
 </form>
