@@ -246,16 +246,18 @@ if(isset($_POST['submit_nominee_register'])){
 if(isset($_GET['by'])){ // vote
   $by=$_GET['by'];
   $to=$_GET['to'];
+  $post=$_GET['post'];
 
-  $qry="SELECT voted from voting_details where voter='$by' AND voted='$to'";
+  $qry="SELECT voted from voting_details where voter='$by' AND (voted='$to' OR voted_post='$post')";
     $run=mysqli_query($conn,$qry);
     $count=mysqli_num_rows($run);
+      
     if($count > 0){
           header('location:nominee_profile.php?vote_status=failed_exists&nominee='.$to);
     }
-else{
-
- $sql = "INSERT INTO `voting_details` (`voter`, `voted`) VALUES('$by','$to')";
+else
+{
+ $sql = "INSERT INTO `voting_details` (`voter`, `voted`,`voted_post`) VALUES('$by','$to','$post')";
 
   $result=mysqli_query($conn,$sql);
   if($result){
@@ -357,7 +359,7 @@ if(isset($_POST['contact_sendmail'])){
   $message="Email id -".$email."<br>Name- ".$name."<br>Number- ".$number."<br>subject- ".$subject."<br>message- ".$msg;
   //$mainmail="deep7rd@gmail.com";
   $sub="You have received a feedback from your website voting system.";
-   $sendmail=sendmail($email,$message,$sub);
+   $sendmail=sendmail("1shindetejashree@gmail.com",$message,$sub);
     if($sendmail=='send'){
           $_SESSION['contact_mail']="Thank You. We have received your message and we will get back to you soon.";
     header('location:contact_us.php');

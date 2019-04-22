@@ -43,7 +43,7 @@ echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
 
 	<div class="col-md-4 offset-md-4 mt-3 ">
             <?php if(@$_GET['vote_status']=='success'){
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        echo '<div class="alert alert-success  fade show" role="alert">
   <strong>Thank you!</strong> Your vote is submitted.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -65,8 +65,8 @@ echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
 </div>';
     }
     if(@$_GET['vote_status']=='failed_exists'){
-      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Warning!</strong> It Seems you have already voted him!.
+      echo '<div class="alert alert-warning  fade show" role="alert">
+  <strong>Warning!</strong> It Seems you have already voted for this department!.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -74,7 +74,7 @@ echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
 </div>';
     }
     if(@$_GET['n_status']=='success'){
-      echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
+      echo '<div class="alert alert-info  fade show" role="alert">
   <strong>Info!</strong> Request '.@$_GET['tab'].'.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -114,7 +114,7 @@ echo $not_started= '<p class="alert alert-danger">Voting has been closed.</p>';
                         <a class="btn  btn-outline-success " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=accepted">ACCEPT<span class="fa fa-thumbs-o-up"></span></a>
                         <a class="btn  btn-outline-danger " href="submit.php?nominee=<?php echo $nominee['email']; ?>&nominee_request=declined" >DECLINE <span class="fa fa-thumbs-o-down"></span></a>
                     <?php } else{ if($not_started==''){ ?>   
-                    <a class="btn  btn-outline-info w-100" href="submit.php?by=<?php echo $_SESSION['user_id'] ?>&to=<?php echo $_GET['nominee'] ?> " >VOTE <span class="fa fa-thumbs-o-up"></span></a>  
+                    <a class="btn  btn-outline-info w-100" href="submit.php?by=<?php echo $_SESSION['user_id'] ?>&to=<?php echo $_GET['nominee'] ?>&post=<?php echo $nominee['post'] ?>" >VOTE <span class="fa fa-thumbs-o-up"></span></a>  
                     <?php }
                   }
                     } ?>                 
